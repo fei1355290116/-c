@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			.clock{
+				width: 600px;
+				height: 600px;
+				background: url(images/clock.jpg) no-repeat;
+				margin: 0px auto;
+				position: relative;
+			}
+			.clock div{
+				width: 600px;
+				height: 600px;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+			.hour{
+				background: url(images/hour.png) no-repeat center center;
+			}
+			.minute{
+				background: url(images/minute.png) no-repeat center center;
+			}
+			.second{
+				background: url(images/second.png) no-repeat center center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="clock">
+			<div class="hour" id="h">
+				
+			</div>
+			<div class="minute"id="m">
+				
+			</div>
+			<div class="second" id="s">
+				
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function $(id){
+			return document.getElementById(id);
+		}
+		function fn(){
+			var cur=new Date();
+			//毫秒
+			var ms=cur.getMilliseconds();
+			var second=cur.getSeconds()+ms/1000;
+			var minute=cur.getMinutes()+second/60;
+			var hour=cur.getHours()+minute/60;
+			$("s").style.transform="rotate("+second*6+"deg)"
+			$("m").style.transform="rotate("+minute*6+"deg)"
+			$("h").style.transform="rotate("+hour*30+"deg)"
+		}
+		setInterval(fn,1000)
+	</script>
+</html>
